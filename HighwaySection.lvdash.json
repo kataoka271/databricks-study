@@ -1,0 +1,167 @@
+{
+  "datasets": [
+    {
+      "name": "df1f4fa0",
+      "displayName": "HighwaySection",
+      "queryLines": [
+        "select ST_GeomFromGeoJSON(to_json(named_struct('type', geom_type, 'coordinates', coordinates))) as geometry, coordinates[0][0] as longitude, coordinates[0][1] as latitude, * from workspace.example.highwaysection;\r\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "5635cc8b",
+      "displayName": "Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "1652cbb1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "df1f4fa0",
+                  "fields": [
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    },
+                    {
+                      "name": "N06_004",
+                      "expression": "`N06_004`"
+                    },
+                    {
+                      "name": "N06_007",
+                      "expression": "`N06_007`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "latitude": {
+                    "fieldName": "latitude"
+                  },
+                  "longitude": {
+                    "fieldName": "longitude"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "N06_004"
+                  },
+                  {
+                    "fieldName": "N06_007"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": false,
+                "showDescription": false
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 15
+          }
+        },
+        {
+          "widget": {
+            "name": "c2790ef5",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "df1f4fa0",
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {}
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "64b330f3",
+      "displayName": "グローバルフィルター",
+      "layout": [
+        {
+          "widget": {
+            "name": "c1eac4ea",
+            "queries": [
+              {
+                "name": "dashboards/01f0de86df3517dcaaa8f678f9662b7c/datasets/01f0de86e85f1b4e8d25e1a3af010680_N06_007",
+                "query": {
+                  "datasetName": "df1f4fa0",
+                  "fields": [
+                    {
+                      "name": "N06_007",
+                      "expression": "`N06_007`"
+                    },
+                    {
+                      "name": "N06_007_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "N06_007",
+                    "queryName": "dashboards/01f0de86df3517dcaaa8f678f9662b7c/datasets/01f0de86e85f1b4e8d25e1a3af010680_N06_007"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
