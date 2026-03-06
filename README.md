@@ -1,2 +1,2 @@
-\# This is a databricks sandbox for study
+This is a databricks sandbox for study
 
